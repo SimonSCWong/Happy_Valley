@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>富安浸信會禧年堂 - 喜樂川</title>
@@ -30,43 +31,263 @@
         <h2>喜樂川</h2>
     </div>
 
-    <div class="container">
-        <div class="activities">
-            <h3>活動</h3>
-            <ul class="list-group">
-                <li class="list-group-item">1. 學生天地 當值表 :</li>
-                <li class="list-group-item">  時間:  12:45-2:15     </li>
-                                              <lj>逢星期一 Chowsy  </lj>
-                                              <la>逢星期二 Simon   </la>
-                                              <lb>逢星期三 Ivy     </lb>
-                                              <lc>逢星期四 May     </lc>
-                                              <ld>逢星期五 Sally   </ld>
-                <li class="list-group-item">2. 共享空間 當值表 :</li>
-                <li class="list-group-item">時間:   2:10-4:30</li>
-                <lj>14/10       Mon 小琴   </lj>
-                <la>15/10       Tue Peg    </la>
-                <lb>16/10       Wed Ivy    </lb>
-                <lc>17/10       Thu Ellen  </lc>
-                <ld>18/10       Fri Sally  </ld>
-                <le>21/10       Mon 小琴   </le>
-                <lf>22/10       Tue Ellen  </lf>
-                <lg>23/10       Wed Ivy    </lg>
-                <lh>24/10       Thu 北好   </lh>
-                <lk>25/10       Fri Sally  </lk>
-                <li class="list-group-item">3. 學生補習 時間表</li>
-            </ul>
-        </div>
+<div class="container">
 
-        <div class="address">
-            <h3>地址</h3>
-            <p>馬鞍山富安花園商埸2樓2號室</p>
-        </div>
+<h2>活動</h2>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生天地 當值表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+            input[type="text"], button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
 
-        <div class="outstanding">
-            <h3>卓越表現</h3>
-            <p>我們的活動旨在促進社區的團結和成長，期待您的參與！</p>
-        </div>
-    </div>
+    <h1>學生天地 當值表</h1>
+    <table id="schedule">
+        <thead>
+            <tr>
+                <th>時間</th>
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>12:45-2:15</td>
+                <td><input type="text" placeholder="添加/更新" data-day="mon"></td>
+                <td><input type="text" placeholder="添加/更新" data-day="tue"></td>
+                <td><input type="text" placeholder="添加/更新" data-day="wed"></td>
+                <td><input type="text" placeholder="添加/更新" data-day="thu"></td>
+                <td><input type="text" placeholder="添加/更新" data-day="fri"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="saveBtn">保存</button>
+
+    <script>
+        const saveButton = document.getElementById('saveBtn');
+        const inputs = document.querySelectorAll('input[type="text"]');
+
+        saveButton.addEventListener('click', () => {
+            inputs.forEach(input => {
+                const day = input.getAttribute('data-day');
+                const value = input.value;
+
+                if (value) {
+                    localStorage.setItem(day, value);
+                }
+            });
+            alert('已保存!');
+        });
+
+        // Load saved data on page load
+        window.onload = () => {
+            inputs.forEach(input => {
+                const day = input.getAttribute('data-day');
+                const savedValue = localStorage.getItem(day);
+                if (savedValue) {
+                    input.value = savedValue;
+                }
+            });
+        };
+    </script>
+</body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>共享空間 當值表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+
+<h1>共享空間 當值表</h1>
+
+<table id="schedule1">
+    <thead>
+        <tr>
+            <th>時間</th>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+            <th>星期四</th>
+            <th>星期五</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2:10-4:30</td>
+            <td><input type="text" placeholder="添加/更新" data-day="mon"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="tue"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="wed"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="thu"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="fri"></td>
+        </tr>
+    </tbody>
+</table>
+<button onclick="saveSchedule('schedule1')">保存表格1</button>
+
+<table id="schedule2">
+    <thead>
+        <tr>
+            <th>時間</th>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+            <th>星期四</th>
+            <th>星期五</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2:10-4:30</td>
+            <td><input type="text" placeholder="添加/更新" data-day="mon"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="tue"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="wed"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="thu"></td>
+            <td><input type="text" placeholder="添加/更新" data-day="fri"></td>
+        </tr>
+    </tbody>
+</table>
+<button onclick="saveSchedule('schedule2')">保存表格2</button>
+
+<script>
+    function saveSchedule(tableId) {
+        const inputs = document.querySelectorAll(`#${tableId} input[type="text"]`);
+        const data = {};
+        
+        inputs.forEach(input => {
+            const day = input.getAttribute('data-day');
+            data[day] = input.value;
+        });
+        
+        localStorage.setItem(tableId, JSON.stringify(data));
+        alert('已保存到本地存儲');
+    }
+
+    function loadSchedule(tableId) {
+        const data = JSON.parse(localStorage.getItem(tableId));
+        if (data) {
+            const inputs = document.querySelectorAll(`#${tableId} input[type="text"]`);
+            inputs.forEach(input => {
+                const day = input.getAttribute('data-day');
+                input.value = data[day] || '';
+            });
+        }
+    }
+
+    // Load schedules on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSchedule('schedule1');
+        loadSchedule('schedule2');
+    });
+</script>
+
+<div class="outstanding">
+    <h3>Outstanding:</h3>
+    <p>提供多樣的活動和支持服務，歡迎參加！</p>
+</div>
+
+<div class="address">
+    <h3>地址：</h3>
+    <p>馬鞍山富安花園商埸2樓2號室</p>
+</div>
+
+
+</body>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
